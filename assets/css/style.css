@@ -1,0 +1,691 @@
+/* =============================================
+   SafeRoute — Folha de Estilos Principal
+   =============================================
+   Organização:
+   1. Variáveis CSS
+   2. Reset e base
+   3. Layout (container)
+   4. Navbar
+   5. Botões
+   6. Hero section
+   7. Seções e títulos
+   8. Cards
+   9. Features grid
+   10. Steps (como funciona)
+   11. Aviso de demonstração / Alertas
+   12. Formulários (base)
+   13. Footer
+   14. Utilitários
+   15. Responsivo
+   ============================================= */
+
+
+/* =============================================
+   1. Variáveis CSS
+   ============================================= */
+:root {
+    /* Cores principais */
+    --primary:       #2563eb;
+    --primary-dark:  #1d4ed8;
+    --primary-light: #dbeafe;
+
+    /* Cores secundárias */
+    --secondary:      #10b981;
+    --secondary-dark: #059669;
+
+    /* Cores de estado */
+    --danger:  #ef4444;
+    --warning: #f59e0b;
+    --info:    #3b82f6;
+
+    /* Neutros */
+    --bg-body:     #f1f5f9;
+    --bg-white:    #ffffff;
+    --text:        #1e293b;
+    --text-muted:  #64748b;
+    --border:      #e2e8f0;
+
+    /* Tipografia */
+    --font-family:  'Segoe UI', system-ui, -apple-system, sans-serif;
+    --font-size-sm:  0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg:  1.125rem;
+    --font-size-xl:  1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 2rem;
+    --font-size-4xl: 2.5rem;
+
+    /* Espaçamento */
+    --spacing-xs:  0.25rem;
+    --spacing-sm:  0.5rem;
+    --spacing-md:  1rem;
+    --spacing-lg:  1.5rem;
+    --spacing-xl:  2rem;
+    --spacing-2xl: 3rem;
+    --spacing-3xl: 4rem;
+
+    /* Bordas e sombras */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+    /* Layout */
+    --navbar-height: 4rem;
+    --container-max: 1200px;
+}
+
+
+/* =============================================
+   2. Reset e base
+   ============================================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    color: var(--text);
+    background-color: var(--bg-body);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* =============================================
+   3. Layout (container)
+   ============================================= */
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+
+/* =============================================
+   4. Navbar
+   ============================================= */
+.navbar {
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border);
+    height: var(--navbar-height);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-sm);
+}
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.navbar-brand:hover {
+    color: var(--primary-dark);
+}
+
+.navbar-logo {
+    font-size: 1.5rem;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.nav-link {
+    display: block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    color: var(--text-muted);
+    font-weight: 500;
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary);
+    background-color: var(--primary-light);
+}
+
+/* Botão hamburger (mobile) */
+.navbar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-sm);
+}
+
+.navbar-toggle-icon {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    position: relative;
+    transition: background 0.2s;
+}
+
+.navbar-toggle-icon::before,
+.navbar-toggle-icon::after {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    position: absolute;
+}
+
+.navbar-toggle-icon::before {
+    top: -7px;
+}
+
+.navbar-toggle-icon::after {
+    top: 7px;
+}
+
+
+/* =============================================
+   5. Botões
+   ============================================= */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625rem 1.25rem;
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    font-family: inherit;
+    border: 2px solid transparent;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    gap: var(--spacing-sm);
+    line-height: 1.5;
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: var(--bg-white);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+    color: var(--bg-white);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-secondary:hover {
+    background: var(--primary);
+    color: var(--bg-white);
+}
+
+.btn-lg {
+    padding: 0.75rem 1.75rem;
+    font-size: var(--font-size-lg);
+}
+
+
+/* =============================================
+   6. Hero Section
+   ============================================= */
+.hero {
+    background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%);
+    color: var(--bg-white);
+    padding: var(--spacing-3xl) 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: var(--font-size-4xl);
+    font-weight: 800;
+    margin-bottom: var(--spacing-sm);
+}
+
+.hero-slogan {
+    font-size: var(--font-size-xl);
+    opacity: 0.9;
+    margin-bottom: var(--spacing-lg);
+}
+
+.hero-description {
+    font-size: var(--font-size-lg);
+    max-width: 700px;
+    margin: 0 auto var(--spacing-xl);
+    opacity: 0.85;
+    line-height: 1.7;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Botões invertidos dentro do hero (fundo azul) */
+.hero .btn-primary {
+    background: var(--bg-white);
+    color: var(--primary);
+    border-color: var(--bg-white);
+}
+
+.hero .btn-primary:hover {
+    background: var(--primary-light);
+    border-color: var(--primary-light);
+}
+
+.hero .btn-secondary {
+    color: var(--bg-white);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.hero .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--bg-white);
+    color: var(--bg-white);
+}
+
+
+/* =============================================
+   7. Seções e títulos
+   ============================================= */
+.section {
+    padding: var(--spacing-3xl) 0;
+}
+
+.section-title {
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text);
+}
+
+.section-subtitle {
+    font-size: var(--font-size-lg);
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-2xl);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* =============================================
+   8. Cards
+   ============================================= */
+.card {
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.card h3 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-sm);
+    color: var(--text);
+}
+
+.card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+
+/* =============================================
+   9. Features grid
+   ============================================= */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+}
+
+
+/* =============================================
+   10. Steps (como funciona)
+   ============================================= */
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+}
+
+.step {
+    text-align: center;
+    padding: var(--spacing-lg);
+}
+
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    background: var(--primary);
+    color: var(--bg-white);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    border-radius: 50%;
+    margin-bottom: var(--spacing-md);
+}
+
+.step h3 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-sm);
+}
+
+.step p {
+    color: var(--text-muted);
+}
+
+
+/* =============================================
+   11. Aviso de demonstração / Alertas
+   ============================================= */
+.demo-notice {
+    background: #fef3c7;
+    border: 1px solid #fbbf24;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-align: center;
+    color: #92400e;
+    font-weight: 500;
+}
+
+.alert {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+    font-weight: 500;
+}
+
+.alert-success {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #6ee7b7;
+}
+
+.alert-error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+}
+
+.alert-warning {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fbbf24;
+}
+
+.alert-info {
+    background: var(--primary-light);
+    color: #1e40af;
+    border: 1px solid #93c5fd;
+}
+
+
+/* =============================================
+   12. Formulários (base para etapas futuras)
+   ============================================= */
+.form-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text);
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.625rem 0.875rem;
+    font-size: var(--font-size-base);
+    font-family: inherit;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--bg-white);
+    color: var(--text);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+
+/* =============================================
+   13. Footer
+   ============================================= */
+.footer {
+    background: #1e293b;
+    color: #cbd5e1;
+    padding: var(--spacing-2xl) 0 0;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--spacing-2xl);
+    padding-bottom: var(--spacing-2xl);
+    border-bottom: 1px solid #334155;
+}
+
+.footer-section h3 {
+    color: var(--bg-white);
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-sm);
+}
+
+.footer-section h4 {
+    color: var(--bg-white);
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-md);
+}
+
+.footer-disclaimer {
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-sm);
+    opacity: 0.7;
+}
+
+.footer-links li {
+    margin-bottom: var(--spacing-sm);
+}
+
+.footer-links a {
+    color: #94a3b8;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: var(--bg-white);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+    font-size: var(--font-size-sm);
+    opacity: 0.7;
+}
+
+
+/* =============================================
+   14. Utilitários
+   ============================================= */
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.mt-1 {
+    margin-top: var(--spacing-md);
+}
+
+.mt-2 {
+    margin-top: var(--spacing-xl);
+}
+
+.mb-1 {
+    margin-bottom: var(--spacing-md);
+}
+
+.mb-2 {
+    margin-bottom: var(--spacing-xl);
+}
+
+
+/* =============================================
+   15. Responsivo
+   ============================================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    /* Navbar mobile */
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-nav {
+        display: none;
+        position: absolute;
+        top: var(--navbar-height);
+        left: 0;
+        right: 0;
+        background: var(--bg-white);
+        flex-direction: column;
+        padding: var(--spacing-md);
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow-md);
+    }
+
+    .navbar-nav.active {
+        display: flex;
+    }
+
+    /* Hero mobile */
+    .hero h1 {
+        font-size: var(--font-size-3xl);
+    }
+
+    .hero-description {
+        font-size: var(--font-size-base);
+    }
+
+    /* Grids mobile */
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    /* Seções mobile */
+    .section {
+        padding: var(--spacing-2xl) 0;
+    }
+}
