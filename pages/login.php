@@ -24,6 +24,7 @@ if (isset($_GET['logout']) && $_GET['logout'] === '1') {
 
 // Processamento do formulário de login
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+ verifyCsrf();
     $email = trim($_POST['email'] ?? '');
     $senha = $_POST['senha'] ?? '';
 
@@ -84,6 +85,7 @@ require_once __DIR__ . '/../includes/navbar.php';
                 <?php endif; ?>
 
                 <form action="<?= BASE_URL ?>pages/login.php" method="POST" class="auth-form" novalidate>
+<?= csrfField() ?>
                     <div class="form-group">
                         <label for="email" class="form-label">Endereço de Email</label>
                         <input 

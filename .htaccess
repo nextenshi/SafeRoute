@@ -28,3 +28,11 @@ Options -Indexes
         Require all denied
     </IfModule>
 </FilesMatch>
+
+# Impede leitura direta de .env e arquivos sensiveis
+<FilesMatch "(^\.|\.(log|bak|sql|md|env|ini)$)">
+ Require all denied
+</FilesMatch>
+<IfModule mod_rewrite.c>
+ RewriteRule (^|/)\. - [F,L]
+</IfModule>

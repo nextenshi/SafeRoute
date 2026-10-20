@@ -29,7 +29,7 @@ $extra_js=['https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'];
 <section class="admin-panel"><div id="adminMap" class="admin-map"></div><div class="map-legend"><span>📍 Marcadores representam ocorrências cadastradas.</span><span>O mapa usa OpenStreetMap.</span></div></section>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
- const data=<?= json_encode($ocorrencias,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES) ?>;
+ const data=<?= json_encode($ocorrencias,JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS|JSON_HEX_QUOT|JSON_UNESCAPED_UNICODE|JSON_INVALID_UTF8_SUBSTITUTE) ?>;
  const map=L.map('adminMap').setView([-8.7612,-63.9004],13);
  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(map);
  const bounds=[];

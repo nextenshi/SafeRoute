@@ -115,11 +115,11 @@ function cadastrarUsuario(PDO $pdo, string $nome, string $email, string $senha):
         ];
     }
 
-    // 4. Validação do comprimento da senha (mínimo 6 caracteres)
-    if (strlen($senha) < 6) {
+    // 4. Validação do comprimento da senha (mínimo 8 caracteres)
+    if (strlen($senha) < 8) {
         return [
             'sucesso'  => false,
-            'mensagem' => 'A senha deve conter no mínimo 6 caracteres.',
+            'mensagem' => 'A senha deve conter no mínimo 8 caracteres.',
         ];
     }
 

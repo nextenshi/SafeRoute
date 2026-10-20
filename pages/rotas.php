@@ -38,8 +38,9 @@ function coordenadaValida(string $valor, float $min, float $max): bool
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+ verifyCsrf();
     requireLogin();
-    if (!$valores['origem'] || !$valores['destino']
+    if (!$valores['origem'] || !$valores['destino'] || mb_strlen($valores['origem']) > 255 || mb_strlen($valores['destino']) > 255
         || !coordenadaValida($valores['olat'], -90, 90)
         || !coordenadaValida($valores['dlat'], -90, 90)
         || !coordenadaValida($valores['olng'], -180, 180)
@@ -104,7 +105,7 @@ require_once __DIR__ . '/../includes/navbar.php';
     <section class="card route-planner-card">
         <h2>De onde você vai sair?</h2>
         <p class="muted">Digite o nome de um lugar, rua ou endereço e clique em <strong>Buscar no mapa</strong>. Você também pode tocar diretamente no mapa.</p>
-        <form method="post" id="routePlannerForm" class="route-planner-form">
+        <form method="post" id="routePlannerForm" class="route-planner-form"><?= csrfField() ?>
             <div class="route-field">
                 <label for="routeOrigin" class="form-label">Origem</label>
                 <div class="route-search-row">

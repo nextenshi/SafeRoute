@@ -1,5 +1,5 @@
 # Credenciais e configuracoes locais
-config/database.php
+# config/database.php somente le variaveis (sem senhas)
 .env
 .env.*
 !.env.example

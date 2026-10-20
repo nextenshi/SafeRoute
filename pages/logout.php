@@ -8,6 +8,8 @@
 
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../includes/auth.php';
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') { http_response_code(405); header('Allow: POST'); exit('Use o botao Sair.'); }
+verifyCsrf();
 
 // Limpar todos os dados da superglobal $_SESSION
 $_SESSION = [];

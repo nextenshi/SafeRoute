@@ -1020,3 +1020,6 @@ table{width:100%;border-collapse:collapse}td,th{padding:10px;border-bottom:1px s
 .route-stops-toolbar .route-bus-status{margin:12px 0 0;color:#713f12;font-size:13px;line-height:1.5}
 .route-stops-toolbar .route-bus-actions{gap:9px;margin:12px 0 0}
 .route-stops-toolbar .btn{white-space:normal;text-align:center}
+
+.nav-logout-form{margin:0;padding:0}
+.nav-logout-button{background:transparent;border:0;font:inherit;cursor:pointer}

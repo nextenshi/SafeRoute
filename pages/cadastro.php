@@ -20,6 +20,7 @@ $email = '';
 
 // Processamento do formulário de cadastro
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+ verifyCsrf();
     $nome  = $_POST['nome'] ?? '';
     $email = $_POST['email'] ?? '';
     $senha = $_POST['senha'] ?? '';
@@ -67,6 +68,7 @@ require_once __DIR__ . '/../includes/navbar.php';
                     </div>
                 <?php else: ?>
                     <form action="<?= BASE_URL ?>pages/cadastro.php" method="POST" class="auth-form" novalidate>
+<?= csrfField() ?>
                         <div class="form-group">
                             <label for="nome" class="form-label">Nome Completo</label>
                             <input 
@@ -101,10 +103,10 @@ require_once __DIR__ . '/../includes/navbar.php';
                                 id="senha" 
                                 name="senha" 
                                 class="form-control" 
-                                placeholder="Mínimo de 6 caracteres"
+                                placeholder="Mínimo de 8 caracteres"
                                 required
                             >
-                            <small class="form-text text-muted">Use no mínimo 6 caracteres para sua segurança.</small>
+                            <small class="form-text text-muted">Use no mínimo 8 caracteres para sua segurança.</small>
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-block btn-lg mt-1">
