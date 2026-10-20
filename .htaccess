@@ -1,0 +1,30 @@
+# =============================================
+# SafeRoute — Configuração Apache (.htaccess)
+# =============================================
+
+# Charset padrão UTF-8
+AddDefaultCharset UTF-8
+
+# Desabilitar listagem de diretórios
+Options -Indexes
+
+# Proteger diretórios sensíveis
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Bloquear acesso direto à pasta config/
+    RewriteRule ^config/ - [F,L]
+
+    # Bloquear acesso direto à pasta includes/
+    RewriteRule ^includes/ - [F,L]
+
+    # Bloquear acesso direto à pasta sql/
+    RewriteRule ^sql/ - [F,L]
+</IfModule>
+
+# Bloquear acesso a arquivos .sql e .md
+<FilesMatch "\.(sql|md)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+</FilesMatch>

@@ -1,0 +1,25 @@
+# Credenciais e configuracoes locais
+config/database.php
+.env
+.env.*
+!.env.example
+*.local.php
+
+# Logs, caches, ferramentas e arquivos temporarios
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+node_modules/
+vendor/
+
+# Bancos exportados, copias e dados potencialmente pessoais
+*.sql.gz
+*.sql.zip
+*.sqlite
+*.sqlite3
+*.bak
+backups/
+exports/
