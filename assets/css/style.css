@@ -1,0 +1,1022 @@
+/* =============================================
+   SafeRoute — Folha de Estilos Principal
+   =============================================
+   Organização:
+   1. Variáveis CSS
+   2. Reset e base
+   3. Layout (container)
+   4. Navbar
+   5. Botões
+   6. Hero section
+   7. Seções e títulos
+   8. Cards
+   9. Features grid
+   10. Steps (como funciona)
+   11. Aviso de demonstração / Alertas
+   12. Formulários (base)
+   13. Footer
+   14. Utilitários
+   15. Responsivo
+   ============================================= */
+
+
+/* =============================================
+   1. Variáveis CSS
+   ============================================= */
+:root {
+    /* Cores principais */
+    --primary:       #2563eb;
+    --primary-dark:  #1d4ed8;
+    --primary-light: #dbeafe;
+
+    /* Cores secundárias */
+    --secondary:      #10b981;
+    --secondary-dark: #059669;
+
+    /* Cores de estado */
+    --danger:  #ef4444;
+    --warning: #f59e0b;
+    --info:    #3b82f6;
+
+    /* Neutros */
+    --bg-body:     #f1f5f9;
+    --bg-white:    #ffffff;
+    --text:        #1e293b;
+    --text-muted:  #64748b;
+    --border:      #e2e8f0;
+
+    /* Tipografia */
+    --font-family:  'Segoe UI', system-ui, -apple-system, sans-serif;
+    --font-size-sm:  0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg:  1.125rem;
+    --font-size-xl:  1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 2rem;
+    --font-size-4xl: 2.5rem;
+
+    /* Espaçamento */
+    --spacing-xs:  0.25rem;
+    --spacing-sm:  0.5rem;
+    --spacing-md:  1rem;
+    --spacing-lg:  1.5rem;
+    --spacing-xl:  2rem;
+    --spacing-2xl: 3rem;
+    --spacing-3xl: 4rem;
+
+    /* Bordas e sombras */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+    /* Layout */
+    --navbar-height: 4rem;
+    --container-max: 1200px;
+}
+
+
+/* =============================================
+   2. Reset e base
+   ============================================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    color: var(--text);
+    background-color: var(--bg-body);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* =============================================
+   3. Layout (container)
+   ============================================= */
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+
+/* =============================================
+   4. Navbar
+   ============================================= */
+.navbar {
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border);
+    height: var(--navbar-height);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-sm);
+}
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.navbar-brand:hover {
+    color: var(--primary-dark);
+}
+
+.navbar-logo {
+    font-size: 1.5rem;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.nav-link {
+    display: block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    color: var(--text-muted);
+    font-weight: 500;
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary);
+    background-color: var(--primary-light);
+}
+
+.nav-item-user {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.nav-user-greeting {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.badge-admin {
+    background-color: #fef3c7;
+    color: #92400e;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.15rem 0.45rem;
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid #fde68a;
+}
+
+.nav-link-logout {
+    color: var(--danger);
+}
+
+.nav-link-logout:hover {
+    color: #b91c1c;
+    background-color: #fee2e2;
+}
+
+/* Botão hamburger (mobile) */
+.navbar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-sm);
+}
+
+.navbar-toggle-icon {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    position: relative;
+    transition: background 0.2s;
+}
+
+.navbar-toggle-icon::before,
+.navbar-toggle-icon::after {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    position: absolute;
+}
+
+.navbar-toggle-icon::before {
+    top: -7px;
+}
+
+.navbar-toggle-icon::after {
+    top: 7px;
+}
+
+
+/* =============================================
+   5. Botões
+   ============================================= */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625rem 1.25rem;
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    font-family: inherit;
+    border: 2px solid transparent;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    gap: var(--spacing-sm);
+    line-height: 1.5;
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: var(--bg-white);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+    color: var(--bg-white);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-secondary:hover {
+    background: var(--primary);
+    color: var(--bg-white);
+}
+
+.btn-lg {
+    padding: 0.75rem 1.75rem;
+    font-size: var(--font-size-lg);
+}
+
+.btn-sm {
+    padding: 0.375rem 0.875rem;
+    font-size: var(--font-size-sm);
+}
+
+.btn-block {
+    display: flex;
+    width: 100%;
+}
+
+
+/* =============================================
+   6. Hero Section
+   ============================================= */
+.hero {
+    background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%);
+    color: var(--bg-white);
+    padding: var(--spacing-3xl) 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: var(--font-size-4xl);
+    font-weight: 800;
+    margin-bottom: var(--spacing-sm);
+}
+
+.hero-slogan {
+    font-size: var(--font-size-xl);
+    opacity: 0.9;
+    margin-bottom: var(--spacing-lg);
+}
+
+.hero-description {
+    font-size: var(--font-size-lg);
+    max-width: 700px;
+    margin: 0 auto var(--spacing-xl);
+    opacity: 0.85;
+    line-height: 1.7;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Botões invertidos dentro do hero (fundo azul) */
+.hero .btn-primary {
+    background: var(--bg-white);
+    color: var(--primary);
+    border-color: var(--bg-white);
+}
+
+.hero .btn-primary:hover {
+    background: var(--primary-light);
+    border-color: var(--primary-light);
+}
+
+.hero .btn-secondary {
+    color: var(--bg-white);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.hero .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--bg-white);
+    color: var(--bg-white);
+}
+
+
+/* =============================================
+   7. Seções e títulos
+   ============================================= */
+.section {
+    padding: var(--spacing-3xl) 0;
+}
+
+.section-title {
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text);
+}
+
+.section-subtitle {
+    font-size: var(--font-size-lg);
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-2xl);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* =============================================
+   8. Cards
+   ============================================= */
+.card {
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.card h3 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-sm);
+    color: var(--text);
+}
+
+.card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+
+/* =============================================
+   9. Features grid
+   ============================================= */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+}
+
+
+/* =============================================
+   10. Steps (como funciona)
+   ============================================= */
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+}
+
+.step {
+    text-align: center;
+    padding: var(--spacing-lg);
+}
+
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    background: var(--primary);
+    color: var(--bg-white);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    border-radius: 50%;
+    margin-bottom: var(--spacing-md);
+}
+
+.step h3 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-sm);
+}
+
+.step p {
+    color: var(--text-muted);
+}
+
+
+/* =============================================
+   11. Aviso de demonstração / Alertas
+   ============================================= */
+.demo-notice {
+    background: #fef3c7;
+    border: 1px solid #fbbf24;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-align: center;
+    color: #92400e;
+    font-weight: 500;
+}
+
+.alert {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+    font-weight: 500;
+}
+
+.alert-success {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #6ee7b7;
+}
+
+.alert-error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+}
+
+.alert-warning {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fbbf24;
+}
+
+.alert-info {
+    background: var(--primary-light);
+    color: #1e40af;
+    border: 1px solid #93c5fd;
+}
+
+
+/* =============================================
+   12. Formulários (base para etapas futuras)
+   ============================================= */
+.form-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text);
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.625rem 0.875rem;
+    font-size: var(--font-size-base);
+    font-family: inherit;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--bg-white);
+    color: var(--text);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-text {
+    display: block;
+    margin-top: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+}
+
+
+/* =============================================
+   12.1. Telas de Autenticação (Login / Cadastro)
+   ============================================= */
+.auth-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-3xl) 0;
+    flex: 1;
+}
+
+.auth-wrapper {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.auth-card {
+    padding: var(--spacing-2xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.auth-icon {
+    font-size: 2.5rem;
+    display: inline-block;
+    margin-bottom: var(--spacing-xs);
+}
+
+.auth-title {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: var(--spacing-xs);
+}
+
+.auth-subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+.auth-form {
+    margin-bottom: var(--spacing-lg);
+}
+
+.auth-footer {
+    text-align: center;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border);
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+
+/* =============================================
+   13. Footer
+   ============================================= */
+.footer {
+    background: #1e293b;
+    color: #cbd5e1;
+    padding: var(--spacing-2xl) 0 0;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--spacing-2xl);
+    padding-bottom: var(--spacing-2xl);
+    border-bottom: 1px solid #334155;
+}
+
+.footer-section h3 {
+    color: var(--bg-white);
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-sm);
+}
+
+.footer-section h4 {
+    color: var(--bg-white);
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-md);
+}
+
+.footer-disclaimer {
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-sm);
+    opacity: 0.7;
+}
+
+.footer-links li {
+    margin-bottom: var(--spacing-sm);
+}
+
+.footer-links a {
+    color: #94a3b8;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: var(--bg-white);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+    font-size: var(--font-size-sm);
+    opacity: 0.7;
+}
+
+
+/* =============================================
+   14. Utilitários
+   ============================================= */
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.mt-1 {
+    margin-top: var(--spacing-md);
+}
+
+.mt-2 {
+    margin-top: var(--spacing-xl);
+}
+
+.mb-1 {
+    margin-bottom: var(--spacing-md);
+}
+
+.mb-2 {
+    margin-bottom: var(--spacing-xl);
+}
+
+
+/* =============================================
+   15. Responsivo
+   ============================================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    /* Navbar mobile */
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-nav {
+        display: none;
+        position: absolute;
+        top: var(--navbar-height);
+        left: 0;
+        right: 0;
+        background: var(--bg-white);
+        flex-direction: column;
+        padding: var(--spacing-md);
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow-md);
+    }
+
+    .navbar-nav.active {
+        display: flex;
+    }
+
+    /* Hero mobile */
+    .hero h1 {
+        font-size: var(--font-size-3xl);
+    }
+
+    .hero-description {
+        font-size: var(--font-size-base);
+    }
+
+    /* Grids mobile */
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    /* Seções mobile */
+    .section {
+        padding: var(--spacing-2xl) 0;
+    }
+}
+
+
+/* =============================================
+   17. Páginas ainda não disponíveis ("em breve")
+   Usado por includes/paginas.php. Adicionado na Etapa 0.
+   Usa só as variáveis já existentes (tema atual).
+   ============================================= */
+.nav-link-soon,
+.nav-link-soon:hover {
+    color: var(--text-muted);
+    background: none;
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+.soon-tag {
+    display: inline-block;
+    margin-left: 0.25rem;
+    padding: 0 0.4rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.footer-links .footer-soon {
+    color: var(--text-muted);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Botões de páginas ainda não disponíveis (ex.: botões do hero) */
+.btn-soon {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.admin-card{max-width:900px;margin:40px auto;background:#111827;color:#fff;padding:30px;border-radius:16px;border:1px solid #007acc}
+.admin-card a{color:#00bfff}
+table{width:100%;border-collapse:collapse}td,th{padding:10px;border-bottom:1px solid #374151;text-align:left}
+
+/* ===== SafeRoute — área administrativa ===== */
+.admin-page{max-width:1180px;margin:0 auto;padding:48px 24px 80px}
+.admin-hero{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:28px;padding:34px;border:1px solid rgba(0,200,255,.18);border-radius:20px;background:linear-gradient(135deg,rgba(0,200,255,.09),rgba(15,23,42,.75))}
+.admin-hero.compact{margin-bottom:24px}
+.admin-hero h1{margin:7px 0 8px;font-size:clamp(28px,4vw,42px);color:#fff}
+.admin-hero p{margin:0;color:#a9b5c7;max-width:680px}
+.eyebrow{font-size:11px;letter-spacing:2px;font-weight:800;color:#20d7ff}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:24px}
+.stat-card,.admin-card{background:#101720;border:1px solid rgba(255,255,255,.08);border-radius:18px;box-shadow:0 12px 35px rgba(0,0,0,.2)}
+.stat-card{padding:24px}.stat-card span,.stat-card small{display:block;color:#91a0b5}.stat-card strong{display:block;color:#fff;font-size:34px;margin:8px 0}
+.admin-card{padding:24px}
+.section-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:20px}
+.section-heading h2{margin:4px 0 0;color:#fff}.section-heading a{color:#20d7ff;text-decoration:none}
+.table-wrap{overflow:auto}
+.admin-table{width:100%;border-collapse:collapse;color:#dbe5f1;min-width:650px}
+.admin-table th{font-size:12px;text-transform:uppercase;letter-spacing:.8px;color:#7f91a8;text-align:left;border-bottom:1px solid rgba(255,255,255,.09);padding:14px}
+.admin-table td{padding:16px 14px;border-bottom:1px solid rgba(255,255,255,.06)}
+.admin-table tr:hover td{background:rgba(32,215,255,.035)}
+.empty{text-align:center;color:#7f91a8;padding:35px!important}
+.toolbar{display:flex;justify-content:flex-end;margin-bottom:18px}
+.search-form{display:flex;gap:10px;width:min(100%,620px)}
+.search-form input{flex:1;background:#0b1118;border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:12px 14px;color:#fff;outline:none}
+.search-form input:focus{border-color:#20d7ff;box-shadow:0 0 0 3px rgba(32,215,255,.1)}
+.btn-primary,.btn-danger{border:0;border-radius:10px;padding:11px 16px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}
+.btn-primary{background:#13c7ed;color:#061018}.btn-primary:hover{filter:brightness(1.08)}
+.btn-danger{background:rgba(239,68,68,.12);color:#ff8585}.btn-danger:hover{background:rgba(239,68,68,.2)}
+.inline-form{margin:0}.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:#1d2733;color:#b9c5d4;font-size:12px}.badge-admin{background:rgba(32,215,255,.12);color:#20d7ff}
+@media(max-width:760px){.admin-page{padding:28px 16px 60px}.admin-hero{padding:24px;display:block}.admin-hero .btn-primary{margin-top:20px}.stats-grid{grid-template-columns:1fr}.search-form{width:100%;flex-direction:column}}
+
+
+/* SafeRoute Admin */
+.admin-shell{max-width:1280px;margin:0 auto;padding:28px 24px 60px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:24px}
+.admin-sidebar{background:#0f172a;border:1px solid #1e293b;border-radius:18px;padding:16px;height:max-content;position:sticky;top:84px}
+.admin-sidebar .admin-brand{padding:12px 12px 18px;border-bottom:1px solid #263244;margin-bottom:10px}
+.admin-sidebar .admin-brand strong{display:block;color:#fff;font-size:18px}
+.admin-sidebar .admin-brand span{font-size:12px;color:#7f91a8}
+.admin-menu a{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:10px;color:#aebbd0;margin:3px 0;text-decoration:none}
+.admin-menu a:hover,.admin-menu a.active{background:#172338;color:#20d7ff}
+.admin-content{min-width:0}
+.admin-top{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;margin-bottom:24px}
+.admin-top .eyebrow{color:#20d7ff;font-size:11px;letter-spacing:2px;font-weight:800}
+.admin-top h1{color:#0f172a;font-size:32px;line-height:1.15;margin:5px 0}
+.admin-top p{color:#64748b;margin:0}
+.admin-actions{display:flex;gap:10px;flex-wrap:wrap}
+.admin-panel{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:22px;box-shadow:0 8px 28px rgba(15,23,42,.06);margin-bottom:20px}
+.admin-panel h2{color:#0f172a;margin:0 0 4px}
+.admin-panel .panel-subtitle{color:#64748b;font-size:14px;margin-bottom:18px}
+.admin-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px}
+.admin-stat{padding:20px;border-radius:16px;background:#0f172a;border:1px solid #1e293b;color:#fff}
+.admin-stat .label{font-size:13px;color:#94a3b8}.admin-stat .value{font-size:34px;font-weight:800;margin:5px 0}.admin-stat .hint{font-size:12px;color:#64748b}
+.admin-table{width:100%;border-collapse:collapse}
+.admin-table th{font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:#64748b;text-align:left;padding:12px;border-bottom:1px solid #e2e8f0}
+.admin-table td{padding:14px 12px;border-bottom:1px solid #eef2f7;color:#334155}
+.admin-table tbody tr:hover{background:#f8fafc}
+.admin-badge{display:inline-block;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:700}
+.admin-badge.admin{background:#dff7ff;color:#087c9d}.admin-badge.comum{background:#f1f5f9;color:#64748b}
+.status-pendente{background:#fef3c7;color:#92400e}.status-aprovada{background:#dcfce7;color:#166534}.status-rejeitada{background:#fee2e2;color:#991b1b}
+.admin-btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:9px;padding:9px 12px;font-weight:700;cursor:pointer;text-decoration:none;font-family:inherit}
+.admin-btn.primary{background:#0ea5e9;color:#fff}.admin-btn.primary:hover{background:#0284c7;color:#fff}
+.admin-btn.danger{background:#fee2e2;color:#b91c1c}.admin-btn.danger:hover{background:#fecaca;color:#991b1b}
+.admin-btn.secondary{background:#f1f5f9;color:#334155}.admin-btn.secondary:hover{background:#e2e8f0;color:#0f172a}
+.admin-search{display:flex;gap:10px;margin-bottom:18px}.admin-search input{flex:1;min-width:0;padding:11px 13px;border:1px solid #cbd5e1;border-radius:9px;font:inherit;outline:none}.admin-search input:focus{border-color:#0ea5e9;box-shadow:0 0 0 3px rgba(14,165,233,.12)}
+.admin-empty{text-align:center;padding:32px!important;color:#94a3b8!important}
+.admin-map{height:560px;border-radius:14px;overflow:hidden;border:1px solid #dbe3ec}
+.map-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;color:#64748b;font-size:13px}.legend-dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:5px}
+.admin-kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:20px}
+.kpi-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:16px}.kpi-box strong{display:block;font-size:25px;color:#0f172a}.kpi-box span{font-size:13px;color:#64748b}
+@media(max-width:900px){.admin-shell{grid-template-columns:1fr}.admin-sidebar{position:static}.admin-menu{display:grid;grid-template-columns:repeat(3,1fr)}.admin-stats{grid-template-columns:1fr}.admin-top{align-items:flex-start;flex-direction:column}}
+@media(max-width:600px){.admin-shell{padding:20px 14px}.admin-menu{grid-template-columns:1fr 1fr}.admin-table{min-width:700px}.admin-panel{padding:16px}.admin-search{flex-direction:column}.admin-map{height:430px}}
+
+/* Mapa */
+.map-page{padding-top:42px;padding-bottom:70px}
+.map-head{margin-bottom:22px}.map-head .eyebrow{font-size:11px;letter-spacing:2px;color:#2563eb;font-weight:800}.map-head h1{margin:6px 0;color:#0f172a;font-size:34px}.map-head p{color:#64748b}
+.safe-map{height:600px;border-radius:18px;overflow:hidden;border:1px solid #dbe3ec;box-shadow:0 8px 28px rgba(15,23,42,.08)}
+.map-info{margin-top:12px;padding:13px 16px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;color:#64748b}.map-info strong{color:#0f172a}
+@media(max-width:700px){.safe-map{height:470px}.map-page{padding-top:28px}.map-head h1{font-size:28px}}
+
+/* SafeRoute — telas funcionais finais */
+.page-main{padding:44px 24px 72px;min-height:65vh}.page-hero{margin-bottom:28px}.page-hero h1{font-size:clamp(30px,4vw,44px);margin:6px 0 8px;color:#0f172a}.page-hero p{color:#64748b;max-width:760px}.eyebrow{color:#0ea5e9;font-size:11px;font-weight:800;letter-spacing:2px}.content-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,.85fr);gap:22px;align-items:start}.card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:24px;box-shadow:0 8px 28px rgba(15,23,42,.06)}.card h2{margin:0 0 8px;color:#0f172a}.muted{color:#64748b}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.form-group.full,.full{grid-column:1/-1}.form-control,select,textarea{width:100%;box-sizing:border-box}.safe-map{height:520px;border-radius:18px;overflow:hidden;border:1px solid #dbe3ec;box-shadow:0 8px 28px rgba(15,23,42,.08)}.map-info{background:#fff;border:1px solid #e2e8f0;padding:13px 16px;border-radius:12px;color:#334155}.alert{padding:14px 16px;border-radius:12px;margin-bottom:18px}.alert-success{background:#dcfce7;color:#166534;border:1px solid #bbf7d0}.notice{margin-top:22px;padding:14px 16px;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:12px}.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:22px}.stat-card{background:#0f172a;color:#fff;border-radius:18px;padding:24px}.stat-card span{color:#94a3b8}.stat-card strong{display:block;font-size:38px;margin-top:5px}.route-result{display:grid;grid-template-columns:.75fr 1.25fr;gap:22px;align-items:start}.route-result>div:first-child{background:#0f172a;color:#fff;border-radius:18px;padding:26px}.route-result h2{margin:8px 0;color:#fff}.route-result p{color:#cbd5e1}.route-result small{color:#94a3b8}.route-result .safe-map{height:430px}.action-row{display:flex;gap:6px;flex-wrap:wrap}.status-pendente{background:#fef3c7;color:#92400e}.status-aprovada{background:#dcfce7;color:#166534}.status-rejeitada{background:#fee2e2;color:#991b1b}
+@media(max-width:850px){.content-grid,.route-result{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.form-group.full,.full{grid-column:auto}.stats-grid{grid-template-columns:1fr}.safe-map{height:430px}}
+
+/* Planejamento de rotas acessível: localização por busca ou clique no mapa. */
+.route-planner-card{margin-bottom:24px}
+.route-planner-card>h2{margin-bottom:8px}
+.route-planner-form{display:flex;flex-direction:column;gap:18px;margin-top:22px}
+.route-field{display:flex;flex-direction:column;gap:7px;min-width:0}
+.route-search-row{display:flex;gap:10px;align-items:stretch}
+.route-search-row .form-control{flex:1;min-width:0}
+.route-search-btn{white-space:nowrap}
+.route-choice-status{color:#64748b;font-size:13px}
+.route-choice-status.is-ready{color:#047857;font-weight:700}
+.route-map-tools{display:flex;flex-wrap:wrap;gap:10px}
+.route-mark-btn.is-selected{background:#0f172a;color:#fff;border-color:#0f172a;box-shadow:0 0 0 2px rgba(2,132,199,.2)}
+.route-map-help{margin:0;color:#334155;background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:12px 14px}
+.route-picker-map{height:420px;max-width:100%}
+.route-attribution-info{color:#64748b;font-size:12px;margin:-8px 0 0}
+.route-safety-note{font-size:13px;color:#64748b;margin:18px 0 0}
+.route-login-note{margin-bottom:18px}
+@media(max-width:650px){.route-search-row{flex-direction:column}.route-search-btn{width:100%}.route-map-tools>.btn{width:100%}.route-picker-map{height:350px}}
+
+/* SafeRoute — trajeto real pelas ruas e direções passo a passo */
+.route-live-result{background:#f8fafc;border:1px solid #cbd5e1;border-radius:16px;padding:20px;min-width:0}
+.route-live-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.route-live-heading h3{margin:5px 0 0;color:#0f172a;font-size:21px}
+.route-mode-badge{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;background:#e0f2fe;color:#075985;font-weight:800;font-size:13px}
+.route-live-status{font-size:14px;line-height:1.6;color:#334155;margin:12px 0}
+.route-road-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}
+.route-road-summary>div{background:white;border:1px solid #dbeafe;border-radius:12px;padding:16px}
+.route-road-summary strong{display:block;color:#0369a1;font-size:26px;line-height:1.25}
+.route-road-summary span{display:block;margin-top:4px;color:#64748b;font-size:12px}
+.route-direction-panel{background:#fff;border-radius:12px;border:1px solid #e2e8f0;margin-top:12px;overflow:hidden}
+.route-direction-panel h4{margin:0;padding:16px 18px;color:#0f172a;border-bottom:1px solid #e2e8f0;font-size:16px}
+.route-directions-list{list-style:none;margin:0;padding:0;max-height:420px;overflow-y:auto}
+.route-directions-list li{border-bottom:1px solid #edf2f7}
+.route-directions-list li:last-child{border-bottom:0}
+.route-direction-step{width:100%;display:flex;gap:14px;align-items:center;text-align:left;border:0;background:#fff;padding:13px 16px;font:inherit;cursor:pointer;color:#0f172a}
+.route-direction-step:hover,.route-direction-step:focus-visible{background:#eff6ff;outline-offset:-2px}
+.route-direction-icon{flex:0 0 38px;height:38px;border-radius:11px;background:#e0f2fe;color:#0369a1;display:flex;align-items:center;justify-content:center;font-size:23px;font-weight:800}
+.route-direction-content{min-width:0;display:block;flex:1}
+.route-direction-content strong{display:block;font-size:14px;line-height:1.45;overflow-wrap:anywhere}
+.route-direction-content small{display:block;margin-top:3px;color:#64748b;font-size:12px}
+.route-routing-note{color:#64748b;font-size:12px;line-height:1.6;margin:14px 0 0}
+@media(max-width:600px){.route-live-result{padding:14px}.route-road-summary strong{font-size:21px}.route-direction-step{padding:12px}.route-road-summary>div{padding:12px}}
+
+.route-open-navigation{display:inline-flex;align-items:center;margin:6px 0 2px;text-decoration:none}
+.route-open-navigation[hidden]{display:none}
+
+
+/* SafeRoute — transporte e consulta de ônibus */
+.route-transport-picker{border:0;padding:0;margin:0;min-width:0}
+.route-transport-picker legend{color:#0f172a;font-weight:800;margin-bottom:10px}
+.route-transport-options{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
+.route-transport-button{display:flex;align-items:center;justify-content:center;gap:7px;min-height:54px;border:1px solid #cbd5e1;border-radius:12px;background:#fff;color:#334155;font:inherit;font-weight:700;cursor:pointer;transition:background .15s,border-color .15s,box-shadow .15s}
+.route-transport-button:hover{background:#f0f9ff;border-color:#7dd3fc}
+.route-transport-button:focus-visible{outline:3px solid #38bdf8;outline-offset:2px}
+.route-transport-button[aria-pressed="true"]{background:#e0f2fe;border-color:#0284c7;color:#075985;box-shadow:0 0 0 2px rgba(2,132,199,.18)}
+.route-bus-section{margin-top:16px;padding:17px;background:#fff;border:1px solid #dbeafe;border-radius:12px}
+.route-bus-section h4{margin:0 0 7px;color:#0f172a;font-size:17px}
+.route-bus-section>p{color:#475569;font-size:13px;line-height:1.6}
+.route-bus-actions{display:flex;align-items:center;flex-wrap:wrap;gap:14px;margin:14px 0}
+.route-toggle{display:flex;align-items:center;gap:7px;font-size:13px;color:#334155;cursor:pointer}
+.route-toggle input{width:auto}
+.route-bus-status{border-radius:8px;padding:10px 12px;background:#f1f5f9;color:#334155}
+.route-bus-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}
+.route-bus-grid h5{color:#0f172a;margin:0 0 8px;font-size:14px}
+.route-bus-list{padding:0;margin:0;list-style:none;max-height:320px;overflow:auto;border:1px solid #e2e8f0;border-radius:10px}
+.route-bus-list li{border-bottom:1px solid #e2e8f0;padding:9px 12px;font-size:13px;color:#334155}
+.route-bus-list li:last-child{border-bottom:none}
+.route-bus-list button{border:0;background:transparent;color:#0369a1;text-align:left;cursor:pointer;padding:0;font:inherit;font-weight:700;overflow-wrap:anywhere}
+.route-bus-list button:hover{text-decoration:underline}
+.route-bus-list small{display:block;color:#64748b;margin-top:3px}
+.route-bus-disclaimer{font-size:12px!important;color:#64748b!important}
+.route-bus-section[hidden]{display:none}
+@media(max-width:720px){.route-transport-options{grid-template-columns:repeat(3,minmax(0,1fr))}.route-transport-button{flex-direction:column;gap:2px;font-size:13px;padding:7px}.route-bus-grid{grid-template-columns:1fr}}
+@media(max-width:380px){.route-transport-options{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* SafeRoute — mapa de registros e transporte visível no próprio mapa */
+.route-map-legend{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;color:#475569;font-size:12px;line-height:1.4}
+.route-map-legend span{display:inline-flex;align-items:center;gap:7px}
+.route-legend-dot{display:inline-block;width:12px;height:12px;border-radius:50%;border:1px solid rgba(15,23,42,.4)}
+.route-risk-map-hint{font-size:13px!important;color:#fda4af!important;line-height:1.5}
+.route-stop-line{display:block;margin-top:6px;cursor:pointer;border:0;background:#ede9fe;color:#5b21b6;border-radius:6px;padding:5px 7px;line-height:1.3}
+.route-stop-line:hover{background:#ddd6fe}
+.route-bus-status{line-height:1.6}
+.route-bus-disclaimer a{font-weight:750;color:#0369a1}
+.route-map-legend + .route-toggle{align-self:flex-start}
+
+/* SafeRoute v5: paradas de ônibus ficam acessíveis em todos os modos. */
+.route-stops-toolbar{margin:12px 0 17px;padding:16px;border:1px solid #fcd34d;background:#fffbeb;border-radius:12px}
+.route-stops-toolbar h3{margin:0 0 5px;color:#713f12;font-size:17px}
+.route-stops-toolbar .muted{margin:0;color:#78350f;line-height:1.5;font-size:13px}
+.route-stops-toolbar .route-bus-status{margin:12px 0 0;color:#713f12;font-size:13px;line-height:1.5}
+.route-stops-toolbar .route-bus-actions{gap:9px;margin:12px 0 0}
+.route-stops-toolbar .btn{white-space:normal;text-align:center}
