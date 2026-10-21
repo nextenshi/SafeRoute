@@ -1,0 +1,48 @@
+name: Integrar historico verdadeiro de setembro (uma vez)
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/integrar-historico-original.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  integrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Integrar commits originais sem alterar arquivos do site
+        shell: bash
+        run: |
+          set -euo pipefail
+          bundle=".github/_import_temporario/historico-setembro-2026.bundle"
+          expected="62d74fbbe40628a5cf9ce5fd9db0ec2cb37c6df0"
+          git bundle verify "$bundle"
+          git fetch "$bundle" 'refs/heads/main:refs/remotes/original-setembro/main'
+          old=$(git rev-parse 'refs/remotes/original-setembro/main')
+          if [ "$old" != "$expected" ]; then
+             echo "ERRO: bundle original nao corresponde ao SHA auditado"
+             exit 1
+          fi
+          if git merge-base --is-ancestor "$expected" HEAD; then
+             echo "Historico de setembro ja foi integrado."
+             exit 0
+          fi
+          original_main=$(git rev-parse HEAD)
+          git config user.name "SafeRoute History Integration"
+          git config user.email "213896767+nextenshi@users.noreply.github.com"
+          git merge --allow-unrelated-histories --no-ff -s ours             -m "Integrar commits autenticos de setembro de 2026 sem alterar o sistema atual"             'refs/remotes/original-setembro/main'
+          git diff --exit-code --quiet HEAD^1 HEAD
+          git merge-base --is-ancestor "$expected" HEAD
+          git fetch origin main
+          test "$(git rev-parse origin/main)" = "$original_main" || {
+             echo "Branch main mudou durante a integracao; rode novamente sem forcar.";
+             exit 1;
+          }
+          git push origin HEAD:refs/heads/main
+          echo "Integrado: 86076043, 111ff173, 62d74fbb"
+          git log --oneline --graph --all -16
