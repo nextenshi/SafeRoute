@@ -44,3 +44,11 @@ O registro abaixo resume a evolução relatada do projeto, **não** representa h
 - A busca de endereços depende do serviço colaborativo Nominatim/OpenStreetMap; se estiver indisponível, o usuário pode escolher o local diretamente no mapa.
 - Incluído workflow GitHub Actions para verificar sintaxe PHP a cada atualização.
 - Revisão humana: mudança solicitada após teste real no navegador da hospedagem; teste funcional do formulário atualizado na hospedagem ainda é necessário.
+
+## 20/10/2026 — Testes do sistema publicado, informados pelo estudante
+
+- Endereço publicado para avaliação: https://saferoute.gt.tc/.
+- O responsável executou o roteiro principal e comunicou 8 resultados OK: layout, cadastro, login, registro pendente, moderação administrativa, mapa/estatísticas, rotas e proteção de arquivos.
+- Os resultados foram relatados pelo usuário, sem logs de execução independentes anexados.
+- Permanecem pendentes uma instalação limpa por outra pessoa, revisão adicional de segurança e reteste da página de ocorrência acessível após publicação do arquivo atualizado.
+- A revisão da documentação distingue funcionalidade relatada, limitação conhecida e teste ainda não comprovado.
