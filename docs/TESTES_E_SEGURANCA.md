@@ -36,6 +36,7 @@ O estudante executou testes no domínio `https://saferoute.gt.tc/` e informou **
 - [ ] Verificar separadamente, caso ainda não tenha sido feito, clique no mapa, arraste do marcador e localização atual.
 - [ ] Verificar individualmente que `/.env`, `/config/database.php`, `/includes/auth.php` e `/sql/hosting.sql` não exibem conteúdo privado.
 - [ ] Registrar e revisar limitações da hospedagem e das APIs externas; não tratar estimativas escolares como avaliações reais de segurança.
-- [ ] Conferir convite de colaboração do professor `rafaelpitwak` e preservar histórico de commits genuíno.
+- [x] Integrar os três commits genuínos de setembro de 2026 à ancestralidade da branch `main` (merge `698263cb`).
+- [ ] Confirmar convite de colaboração do professor `rafaelpitwak` nas configurações de acesso do GitHub.
 
 **Limitações conhecidas:** dados de ônibus do OpenStreetMap podem estar incompletos e serviços externos podem ficar indisponíveis. O indicador de risco é experimental/didático e não garante segurança real.

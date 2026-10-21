@@ -1,7 +1,7 @@
 # SPEC FINAL — SafeRoute
 
 **Sistema:** SafeRoute — Sistema Inteligente de Segurança Urbana e Planejamento de Rotas  
-**Versão da especificação:** 2.2 (atualização após testes de publicação em outubro de 2026)  
+**Versão da especificação:** 2.3 (inclui histórico autêntico integrado em 21/10/2026)  
 **Instituição:** Instituto Federal de Rondônia — Campus Porto Velho Calama  
 **Modalidade:** projeto acadêmico de Desenvolvimento de Sistemas  
 **Repositório indicado:** https://github.com/nextenshi/SafeRoute
@@ -84,7 +84,7 @@ Relacionamentos: `usuario 1:N ocorrencia`, `usuario 1:N rota`, `tipo_ocorrencia 
 - **Rotas rodoviárias:** OSRM público para carro; roteadores comunitários para pé/bicicleta; moto deriva de carro.
 - **Transporte público:** Overpass API/OSM para paradas e relações de linhas; links externos para Google Maps e serviço local.
 - **Ambiente:** XAMPP/Apache + servidor MySQL, inclusive instância usada pelo MySQL Workbench na escola.
-- **Versionamento:** código e documentação no repositório GitHub `nextenshi/SafeRoute`; o histórico público da branch `main` inicia com uploads de outubro de 2026, e os commits originais de setembro ainda requerem integração.
+- **Versionamento:** código e documentação no repositório GitHub `nextenshi/SafeRoute`, com histórico original de 23/09/2026 (três commits autênticos) integrado na ancestralidade da branch `main` por um merge em 21/10/2026, sem reescrever os commits de outubro ou alterar os arquivos do site.
 
 ## 8. Critérios de aceite e testes finais
 
@@ -205,4 +205,4 @@ GitHub armazena o código e histórico, mas **não roda PHP/MySQL**. O projeto f
 
 ### 13.7 Histórico e revisão humana
 
-Os arquivos de evolução do projeto e as decisões de revisão estão em `CHANGELOG.md`. O histórico público atual contém commits de upload e commits desta revisão. Um pacote original contém commits autênticos de setembro de 2026, mas eles ainda não integram a ancestralidade da branch pública; preservar e integrar esse histórico exige cuidado, sem reescrita forçada.
+Os arquivos de evolução do projeto e as decisões de revisão estão em `CHANGELOG.md`. O histórico autêntico original de 23/09/2026 foi integrado à branch pública `main` em 21/10/2026 pelo commit de merge `698263cb09c7c0961915b354393dccfa06c9343b`. Foram preservados sem alterações os commits `86076043d9048895d1fcb342d4d3d25c42ec53ec`, `111ff1731b573cb2c4cf6fb51e1973167bcaba14` e `62d74fbbe40628a5cf9ce5fd9db0ec2cb37c6df0` (autor e datas originais), além da sequência de outubro. A estratégia de merge `ours` mantém a versão atual do site, sem reverter o código. É possível conferir em `https://github.com/nextenshi/SafeRoute/commits/main`. As etapas de auditoria e testes relatados estão documentadas separadamente.

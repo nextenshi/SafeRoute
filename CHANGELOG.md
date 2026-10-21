@@ -33,7 +33,7 @@ O registro abaixo resume a evolução relatada do projeto, **não** representa h
 - Revisão de serialização JSON do mapa para reduzir risco de injeção em scripts.
 - Documentação com instalação local e hospedagem PHP/MySQL, checklist de testes e limitações externas.
 - Revisão humana necessária: validar banco, fluxos reais, APIs externas e segurança no domínio final. O agente não substitui o teste da aplicação no navegador.
-- Histórico: o repositório remoto já possuía commits públicos antes desta revisão; o pacote histórico local contém commits de setembro, ainda não integrados à ancestralidade remota.
+- Histórico: na data desta revisão os commits originais de setembro ainda não faziam parte da branch pública. Foram integrados posteriormente, em 21/10/2026, conforme registro abaixo.
 
 ## 20/10/2026 — Localização acessível no registro de ocorrências
 
@@ -52,3 +52,10 @@ O registro abaixo resume a evolução relatada do projeto, **não** representa h
 - Os resultados foram relatados pelo usuário, sem logs de execução independentes anexados.
 - Permanecem pendentes uma instalação limpa por outra pessoa e revisão adicional de segurança; o estudante informou que a nova busca de endereços já foi testada com sucesso em produção.
 - A revisão da documentação distingue funcionalidade relatada, limitação conhecida e teste ainda não comprovado.
+
+## 21/10/2026 — Integração do histórico original de setembro
+
+- Verificados e integrados ao grafo Git da branch `main` os **três commits autênticos de 23/09/2026**: `86076043` (estrutura inicial), `111ff173` (remoção do gerador de hash) e `62d74fbb` (cadastro e login).
+- Merge original: [`698263cb`](https://github.com/nextenshi/SafeRoute/commit/698263cb09c7c0961915b354393dccfa06c9343b), contendo os dois pais (branch atual e último commit de setembro).
+- Integração feita com merge sem substituição de arquivos (`-s ours`), preservando os commits históricos e o código final, sem `push --force`.
+- A origem desses commits foi conferida por objeto Git e SHA; os testes de instalação limpa e convite do professor são controles separados.
