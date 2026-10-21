@@ -24,7 +24,7 @@ O estudante executou testes no domínio `https://saferoute.gt.tc/` e informou **
 | 7 | Planejamento de rotas e tratamento de falhas de serviços externos/ônibus | OK, conforme relato |
 | 8 | Proteção contra acesso público a arquivos privados | OK, conforme relato |
 
-**Observação:** A tela de ocorrências foi modificada após o teste original para facilitar a seleção de endereços e pontos no mapa. A funcionalidade atualizada deve ser testada novamente em produção após substituir o arquivo `pages/ocorrencias.php` na hospedagem.
+**Atualização — confirmação do estudante (21/10/2026):** a busca de endereços na nova tela de ocorrências foi testada na hospedagem e funcionou, segundo o responsável. Resultado informado, não verificado independentemente nesta documentação.
 
 ## Verificações adicionais antes da entrega definitiva
 
@@ -32,7 +32,8 @@ O estudante executou testes no domínio `https://saferoute.gt.tc/` e informou **
 - [ ] Confirmar no banco que senhas foram armazenadas como hashes, não texto.
 - [ ] Conferir se POST sem token CSRF é rejeitado com HTTP 403 em diferentes formulários.
 - [ ] Confirmar em aba anônima o funcionamento de todas as rotas principais e ausência de login salvo.
-- [ ] Repetir o fluxo de localização por endereço/clique no mapa usando a versão atualizada de ocorrências, no domínio público.
+- [x] Testar a busca de endereço na tela de ocorrências atualizada em produção (OK informado pelo estudante).
+- [ ] Verificar separadamente, caso ainda não tenha sido feito, clique no mapa, arraste do marcador e localização atual.
 - [ ] Verificar individualmente que `/.env`, `/config/database.php`, `/includes/auth.php` e `/sql/hosting.sql` não exibem conteúdo privado.
 - [ ] Registrar e revisar limitações da hospedagem e das APIs externas; não tratar estimativas escolares como avaliações reais de segurança.
 - [ ] Conferir convite de colaboração do professor `rafaelpitwak` e preservar histórico de commits genuíno.
