@@ -34,5 +34,5 @@ O sistema não exige Composer nem npm. O primeiro administrador é configurado m
 - [docs/PUBLICACAO_INFINITYFREE.md](docs/PUBLICACAO_INFINITYFREE.md): guia de hospedagem PHP/MySQL.
 - [docs/TESTES_E_SEGURANCA.md](docs/TESTES_E_SEGURANCA.md): checklist de verificação.
 
-**Publicação:** GitHub armazena código, mas não executa PHP + MySQL. O site necessita de hospedagem PHP/MySQL; não há URL pública validada neste repositório. Nunca publique `.env`, exportações com dados pessoais nem credenciais.
+**Site publicado:** https://saferoute.gt.tc/ — o responsável informou testes funcionais de cadastro, login, ocorrências, mapa e rotas. O servidor usa hospedagem PHP/MySQL InfinityFree, separada do GitHub; alterações no repositório precisam ser enviadas manualmente para o servidor. Nunca publique `.env`, exportações com dados pessoais nem credenciais.
 

@@ -1,7 +1,7 @@
 # SPEC FINAL — SafeRoute
 
 **Sistema:** SafeRoute — Sistema Inteligente de Segurança Urbana e Planejamento de Rotas  
-**Versão da especificação:** 2.1 (registro do estado do projeto em 20/10/2026)  
+**Versão da especificação:** 2.2 (atualização após testes de publicação em outubro de 2026)  
 **Instituição:** Instituto Federal de Rondônia — Campus Porto Velho Calama  
 **Modalidade:** projeto acadêmico de Desenvolvimento de Sistemas  
 **Repositório indicado:** https://github.com/nextenshi/SafeRoute
@@ -25,7 +25,7 @@ Organizar informações de ocorrências urbanas e apoiar a consulta de deslocame
 | RF01 | Cadastrar usuários com e-mail único e senha protegida por hash | Implementado |
 | RF02 | Autenticar, encerrar sessão e controlar acesso comum/admin | Implementado |
 | RF03 | Consultar e editar nome/senha do próprio perfil | Implementado |
-| RF04 | Registrar ocorrência com categoria, data, hora, descrição e coordenadas | Implementado; formulário ainda solicita coordenadas ou geolocalização |
+| RF04 | Registrar ocorrência com categoria, data, hora, descrição e localização | Implementado; endereço pesquisável, clique no mapa e localização com permissão. Coordenadas são preenchidas internamente e validadas no servidor |
 | RF05 | Encaminhar nova ocorrência como pendente para moderação | Implementado |
 | RF06 | Aprovar, rejeitar, editar e excluir ocorrências (admin) | Implementado |
 | RF07 | Consultar usuários cadastrados (admin) | Implementado; listagem, sem edição/exclusão de usuários na interface |
@@ -36,9 +36,9 @@ Organizar informações de ocorrências urbanas e apoiar a consulta de deslocame
 | RF12 | Exibir trajeto viário, distância/tempo e direções quando um serviço responder | Implementado na interface; depende de serviço de rotas externo |
 | RF13 | Oferecer modos carro, moto, caminhada, bicicleta e ônibus | Implementado como opções; capacidades distintas por modo |
 | RF14 | Consultar paradas/linhas de ônibus do OSM e tentar desenhar trajetos mapeados | Implementado como consulta externa; cobertura e carregamento não garantidos |
-| RF15 | Exibir as ocorrências aprovadas incluídas na análise da região como marcadores vermelhos | Implementado no código; verificar no navegador |
+| RF15 | Exibir ocorrências aprovadas consideradas na análise da região como marcadores vermelhos | Implementado; o responsável informou teste funcional do mapa na hospedagem |
 | RF16 | Calcular indicador escolar e registrar consultas na tabela rota | Implementado; não avalia o caminho pelas ruas |
-| RF17 | Interface responsiva com navegação pública e área administrativa | Implementado; testes visuais finais necessários |
+| RF17 | Interface responsiva com navegação pública e área administrativa | Implementado; o responsável informou teste visual do site publicado |
 
 **Áreas administrativas:** `dashboard.php`, `registros.php`, `usuarios.php`, `tipos.php`, `mapa.php` e `estatisticas.php`, na pasta `pages/admin/`. Há ainda `editar_registro.php`.
 
@@ -61,8 +61,8 @@ Organizar informações de ocorrências urbanas e apoiar a consulta de deslocame
 - **RNF04 — Senhas/sessões:** `password_hash`/`password_verify`, sessão HTTP e restrição administrativa.
 - **RNF05 — Conectividade:** serviços públicos de mapas, geocodificação, rotas e transporte exigem internet e podem limitar requisições.
 - **RNF06 — Privacidade:** evitar publicar banco com dados reais, senhas, arquivos locais de conexão e informações pessoais no GitHub.
-- **RNF07 — Segurança:** proteção CSRF adicionada aos formulários POST; PDO parametrizado, senhas com hash e mensagens de erro genéricas; testes de autorização e controle de tentativas de login ainda são pendentes antes da exposição real.
-- **RNF08 — Acessibilidade:** campos e botões identificados, escolha de pontos sem digitar latitude/longitude no planejamento; revisão com teclado/leitor de tela ainda necessária.
+- **RNF07 — Segurança:** proteção CSRF nos formulários POST, PDO parametrizado, senhas com hash e mensagens de erro genéricas. O responsável informou teste de autorização e bloqueio de arquivos privados na hospedagem; revisão complementar (limitação de tentativas de login, testes de CSRF e auditoria de segurança) continua pendente.
+- **RNF08 — Acessibilidade:** campos e botões identificados; tanto no planejamento de rotas quanto no registro de ocorrências é possível escolher um ponto por endereço ou mapa, sem digitar coordenadas. Revisão completa com teclado/leitor de tela ainda é necessária.
 
 ## 6. Modelo de dados — MySQL
 
@@ -84,7 +84,7 @@ Relacionamentos: `usuario 1:N ocorrencia`, `usuario 1:N rota`, `tipo_ocorrencia 
 - **Rotas rodoviárias:** OSRM público para carro; roteadores comunitários para pé/bicicleta; moto deriva de carro.
 - **Transporte público:** Overpass API/OSM para paradas e relações de linhas; links externos para Google Maps e serviço local.
 - **Ambiente:** XAMPP/Apache + servidor MySQL, inclusive instância usada pelo MySQL Workbench na escola.
-- **Versionamento:** Git/GitHub (publicação efetiva depende do envio pelo responsável pelo repositório).
+- **Versionamento:** código e documentação no repositório GitHub `nextenshi/SafeRoute`; o histórico público da branch `main` inicia com uploads de outubro de 2026, e os commits originais de setembro ainda requerem integração.
 
 ## 8. Critérios de aceite e testes finais
 
@@ -103,7 +103,7 @@ Relacionamentos: `usuario 1:N ocorrencia`, `usuario 1:N rota`, `tipo_ocorrencia 
 | CA11 | Ver dashboard/estatísticas | Totais condizem com os dados no MySQL |
 | CA12 | Clonar projeto e configurar banco | Aplicação abre após configurar `.env` e executar `sql/install.sql` |
 
-**Situação da validação em 20/10/2026:** a existência do código foi inspecionada e sua sintaxe pode ser checada localmente, mas **não** houve teste ponta a ponta, carga, acessibilidade nem prova de disponibilidade das APIs externas no computador da escola. Os critérios acima são checklist para registrar evidências.
+**Situação da validação após a publicação:** o responsável informou oito testes funcionais aprovados no endereço público, abrangendo cadastro, autenticação, ocorrências, moderação, mapa, estatísticas, rotas e proteção de arquivos. Posteriormente informou que a nova busca de endereços na tela de ocorrências funcionou na hospedagem. O GitHub Actions validou a sintaxe PHP. Esses resultados não substituem uma instalação limpa independente, teste de carga, auditoria de segurança ou teste integral de acessibilidade. Detalhes em `docs/TESTES_E_SEGURANCA.md`.
 
 ## 9. Limitações conhecidas
 
@@ -112,15 +112,15 @@ Relacionamentos: `usuario 1:N ocorrencia`, `usuario 1:N rota`, `tipo_ocorrencia 
 3. A busca de paradas e trajetos de ônibus depende da cobertura OSM e da disponibilidade de Overpass; pode retornar zero itens até em locais com paradas reais.
 4. Não há GTFS oficial integrado nem previsão de horários/baldeações no próprio aplicativo.
 5. Perfis administrativos permitem listar usuários e criar categorias, mas não oferecem CRUD completo desses dois cadastros.
-6. Não existe hospedagem pública funcional entregue apenas por subir PHP ao GitHub; é necessário um servidor PHP/MySQL separado.
-7. Testes de segurança em produção, automação de testes e validação final no navegador continuam pendentes; foram adicionados tokens CSRF e configuração via `.env`.
+6. A hospedagem PHP/MySQL foi configurada no InfinityFree em `https://saferoute.gt.tc/`. GitHub Pages não executa o PHP; atualizações no GitHub não são transferidas automaticamente para o InfinityFree.
+7. Existe automação de verificação de sintaxe PHP no GitHub Actions, mas ainda faltam testes automatizados de integração, teste de instalação por terceiro, auditoria complementar de segurança e validação completa de acessibilidade.
 
 ## 10. Escopo excluído e melhorias futuras
 
 - Integração oficial de transporte público (GTFS/API) com horários, itinerários, direção e transbordos.
-- Testes automatizados e tratamento mais robusto de falhas das APIs externas.
-- Auditoria de alterações, recuperação de conta e mitigação de CSRF.
-- Publicação em hospedagem compatível com PHP/MySQL, com HTTPS e políticas de privacidade.
+- Testes automatizados de integração e tratamento mais robusto de falhas das APIs externas; já existe teste automatizado de sintaxe PHP.
+- Auditoria de alterações, recuperação de conta, controle de tentativas de login e revisão de segurança dos formulários (proteção CSRF básica já implementada).
+- Monitoramento e manutenção da hospedagem PHP/MySQL publicada, avaliação de disponibilidade/HTTPS e aprimoramento da política de privacidade.
 - Melhorias de acessibilidade, desempenho em rede lenta e avaliação do algoritmo didático.
 
 ## 11. Critério de entrega ao professor
@@ -129,7 +129,7 @@ Relacionamentos: `usuario 1:N ocorrencia`, `usuario 1:N rota`, `tipo_ocorrencia 
 - Arquivos-fonte em repositório GitHub (sem banco real nem credenciais).
 - `README.md` e a seção **Instalação e execução** abaixo com passos; `.env.example`; `sql/install.sql` local e `sql/hosting.sql` para banco precriado na hospedagem.
 - Evidências de testes locais (prints e resultados do checklist), com limitações descritas.
-- Confirmação do link do repositório e, caso a disciplina exija, **link separado de hospedagem PHP/MySQL funcional**.
+- **Entrega obrigatória:** link do repositório `https://github.com/nextenshi/SafeRoute`, link público `https://saferoute.gt.tc/` (funcionamento informado pelo responsável) e confirmação do convite do professor `rafaelpitwak` como colaborador.
 
 ## 12. Histórico desta versão
 
@@ -193,7 +193,7 @@ Copie o arquivo **`.env.example`** como **`.env`** na raiz de `SafeRoute`. O pro
 
 ### 13.5 Publicação online
 
-GitHub armazena o código e histórico, mas **não roda PHP/MySQL**. Use hospedagem que ofereça os dois. O guia `docs/PUBLICACAO_INFINITYFREE.md` detalha uma opção de hospedagem gratuita, com importação de `sql/hosting.sql`, configuração privada de `.env`, HTTPS e roteiro de teste em aba anônima. O link de produção **só pode ser registrado após realmente publicado e testado**.
+GitHub armazena o código e histórico, mas **não roda PHP/MySQL**. O projeto foi instalado no InfinityFree, com o endereço **`https://saferoute.gt.tc/`** e banco MySQL hospedado. O responsável informou testes funcionais nesse domínio. O procedimento para repetir a publicação está em `docs/PUBLICACAO_INFINITYFREE.md`: criar o banco pelo painel, importar `sql/hosting.sql`, configurar `.env` privado e enviar os arquivos para `htdocs`. **A hospedagem não se atualiza automaticamente quando o GitHub recebe um commit**; para atualizar o site, reenvie os arquivos alterados, mantendo o `.env` privado.
 
 ### 13.6 Como testar e avaliar
 
@@ -201,7 +201,7 @@ GitHub armazena o código e histórico, mas **não roda PHP/MySQL**. Use hospeda
 - **Fluxo principal:** Cadastro → Login → Registrar ocorrência → Administrador aprova → Ocorrência no mapa público → Estatísticas → Rotas.
 - **Teste de restrição:** usuário comum não deve acessar `/pages/admin/dashboard.php`.
 - **Testes de ambiente e segurança:** roteiro e estado no arquivo `docs/TESTES_E_SEGURANCA.md`.
-- **Problemas conhecidos:** dados OSM de ônibus incompletos; serviços externos sujeitos a falhas/cota; indicador de risco é didático e não avalia segurança real; falta teste completo de hospedagem/HTTPS até a URL existir.
+- **Problemas conhecidos:** dados OSM de ônibus incompletos; serviços externos sujeitos a falhas/cota; indicador de risco didático; dependência da hospedagem gratuita. Ainda não há comprovação de uma instalação limpa executada por outra pessoa nem de uma auditoria independente de segurança.
 
 ### 13.7 Histórico e revisão humana
 
