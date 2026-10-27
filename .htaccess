@@ -20,6 +20,9 @@ Options -Indexes
 
     # Bloquear acesso direto à pasta sql/
     RewriteRule ^sql/ - [F,L]
+
+    # Bloquear acesso HTTP à biblioteca externa
+    RewriteRule ^vendor/ - [F,L]
 </IfModule>
 
 # Bloquear acesso a arquivos .sql e .md

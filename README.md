@@ -36,3 +36,8 @@ O sistema não exige Composer nem npm. O primeiro administrador é configurado m
 
 **Site publicado:** https://saferoute.gt.tc/ — o responsável informou testes funcionais de cadastro, login, ocorrências, mapa e rotas. O servidor usa hospedagem PHP/MySQL InfinityFree, separada do GitHub; alterações no repositório precisam ser enviadas manualmente para o servidor. Nunca publique `.env`, exportações com dados pessoais nem credenciais.
 
+
+## Recuperação de senha por e-mail
+- No login, clique em **Esqueci minha senha** para receber código no e-mail cadastrado.
+- Consulte [docs/RECUPERACAO_SENHA.md](docs/RECUPERACAO_SENHA.md) para configurar SMTP, atualizar o banco e fazer testes.
+- Em hospedagem InfinityFree, use SMTP externo na porta 587. Nunca envie o `.env` privado ao GitHub.

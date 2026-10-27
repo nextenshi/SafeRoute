@@ -59,3 +59,12 @@ O registro abaixo resume a evolução relatada do projeto, **não** representa h
 - Merge original: [`698263cb`](https://github.com/nextenshi/SafeRoute/commit/698263cb09c7c0961915b354393dccfa06c9343b), contendo os dois pais (branch atual e último commit de setembro).
 - Integração feita com merge sem substituição de arquivos (`-s ours`), preservando os commits históricos e o código final, sem `push --force`.
 - A origem desses commits foi conferida por objeto Git e SHA; os testes de instalação limpa e convite do professor são controles separados.
+
+## 27/10/2026 — Recuperação de senha por e-mail (código versionado, implantação pendente)
+
+- Foi identificada a falta do fluxo **Esqueci minha senha** no login após o responsável esquecer a própria senha.
+- Incluídos pedido de código aleatório de seis dígitos por SMTP externo (PHPMailer), verificação e troca de senha com `password_hash()`.
+- O código é armazenado como HMAC-SHA256 com segredo do servidor, válido por dez minutos, até cinco tentativas, limite por usuário e IP.
+- Duas tabelas adicionadas via SQL de migração **sem apagar contas ou ocorrências**, com documentação de configuração SMTP no `.env`.
+- PHPMailer, biblioteca LGPL-2.1, incluído com licença e diretório protegido contra acesso HTTP.
+- Implementação não significa envio comprovado: integração com MySQL, configuração de SMTP e teste de recebimento **ainda exigem publicação e validação pelo responsável**.

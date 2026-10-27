@@ -206,3 +206,11 @@ GitHub armazena o código e histórico, mas **não roda PHP/MySQL**. O projeto f
 ### 13.7 Histórico e revisão humana
 
 Os arquivos de evolução do projeto e as decisões de revisão estão em `CHANGELOG.md`. O histórico autêntico original de 23/09/2026 foi integrado à branch pública `main` em 21/10/2026 pelo commit de merge `698263cb09c7c0961915b354393dccfa06c9343b`. Foram preservados sem alterações os commits `86076043d9048895d1fcb342d4d3d25c42ec53ec`, `111ff1731b573cb2c4cf6fb51e1973167bcaba14` e `62d74fbbe40628a5cf9ce5fd9db0ec2cb37c6df0` (autor e datas originais), além da sequência de outubro. A estratégia de merge `ours` mantém a versão atual do site, sem reverter o código. É possível conferir em `https://github.com/nextenshi/SafeRoute/commits/main`. As etapas de auditoria e testes relatados estão documentadas separadamente.
+## Atualização 27/10/2026 — Recuperação de senha
+
+- **RF adicional:** usuário não autenticado solicita código de seis dígitos para o e-mail cadastrado e redefine a senha usando o código e uma nova senha; a senha antiga é irrecuperável porque é armazenada como hash.
+- **Páginas:** `pages/esqueci_senha.php`, `pages/redefinir_senha.php` e link na tela de login.
+- **Segurança:** código de uso único, HMAC-SHA256 com segredo em `.env`, validade de 10 minutos, máximo de 5 tentativas, até 3 envios por conta/hora, 1 envio a cada 2 minutos e limite de 20 tentativas de requisição por IP/hora; CSRF e resposta genérica que não revela contas existentes.
+- **Banco:** tabelas `recuperacao_senha` e `recuperacao_limite_ip`, com SQL de migração para banco existente em `sql/migracao_recuperacao_senha.sql`.
+- **Infraestrutura:** InfinityFree exige SMTP externo (porta 587, STARTTLS); PHPMailer LGPL-2.1, senha SMTP e segredo configurados em ambiente privado. Ver [docs/RECUPERACAO_SENHA.md](docs/RECUPERACAO_SENHA.md).
+- **Validação:** sintaxe PHP conferida; teste real do envio SMTP e integração com banco **pendentes até configurar produção**. Não declarar concluído sem testar.

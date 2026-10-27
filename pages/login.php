@@ -16,6 +16,9 @@ requireGuest();
 $erro = '';
 $mensagem = '';
 $email = '';
+if (isset($_GET['redefinida']) && $_GET['redefinida'] === '1') {
+    $mensagem = 'Sua senha foi redefinida! Entre com a nova senha.';
+}
 
 // Mensagem informativa ao sair do sistema
 if (isset($_GET['logout']) && $_GET['logout'] === '1') {
@@ -112,6 +115,7 @@ require_once __DIR__ . '/../includes/navbar.php';
                         >
                     </div>
 
+                    <p style="text-align:right; margin:0 0 1rem;"><a href="<?= BASE_URL ?>pages/esqueci_senha.php">Esqueci minha senha</a></p>
                     <button type="submit" class="btn btn-primary btn-block btn-lg mt-1">
                         Entrar no SafeRoute
                     </button>

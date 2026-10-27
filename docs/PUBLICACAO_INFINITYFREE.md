@@ -16,3 +16,7 @@ O código está no GitHub, mas **não fica disponível ao público** até ser im
 O provedor pode impor limites de recursos ou desativar funcionalidades. O SafeRoute utiliza Leaflet e serviços OSM/OSRM/Overpass/Nominatim, cujos dados e disponibilidade variam. Não invente URL final nem afirme teste de produção sem realizá-lo.
 
 **URL pública usada pelo projeto:** https://saferoute.gt.tc/ — testes funcionais informados pelo responsável. Esta documentação não substitui a validação independente do domínio e do certificado HTTPS. **Importante:** publicar um commit no GitHub não atualiza o conteúdo de `htdocs`; reenvie somente os arquivos modificados e preserve o `.env` privado.
+
+## Recuperação por código no e-mail
+
+Para ativar, siga [RECUPERACAO_SENHA.md](RECUPERACAO_SENHA.md). Execute no banco existente apenas o arquivo `sql/migracao_recuperacao_senha.sql`; publique os novos arquivos, instale PHPMailer e configure SMTP via `.env` sem compartilhar credenciais.
